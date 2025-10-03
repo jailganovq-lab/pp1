@@ -18,6 +18,28 @@ int main(){
     return 0;
 }
 
+1.1)sort after that reverse
+#include <iostream>
+#include <algorithm>
+using namespace std;
+int main(){
+    int n;
+    cin >> n;
+    int a[n];
+    for(int i = 0; i<n; ++i){
+        cin >> a[i] ;
+    }
+    
+
+    sort(a, a+n); 
+
+    for(int i =n-1; i>=0; --i){
+        cout << a[i] << " " ;
+    }
+    return 0;
+}
+
+
 
 2) inverse in place 
 #include <iostream>
@@ -54,9 +76,7 @@ int main(){
     for(int i = 0; i<n; ++i){
         cin >> a[i] ;
     }
-
     reverse(a, a+n);
-
     for(int i = 0 ; i<n; ++i){
         cout << a[i] << " " ;
     }
@@ -83,7 +103,9 @@ int main(){
     cin >> l >> r;
 
 
-    sort(a+l, a+r+1);
+    sort(a+l, a+r+1);   // sort(a.begin() , a.end());
+
+                         // reverse(a.begin() , a.end());
 
     for(int i = 0 ; i<n; ++i){
         cout << a[i] << " " ;
@@ -91,6 +113,29 @@ int main(){
     return 0;
 }
 
+4.1) sum of l and m aralygyndagy
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    int n, l, r;
+    cin >> n >> l >> r;
+
+    vector<int> a(n);
+    for (int i = 0; i < n; i++) {
+        cin >> a[i];
+    }
+
+    long long sum = 0;
+    for (int i = l - 1; i <= r - 1; i++) { // convert positions to 0-based indexes
+        sum += a[i];
+    }
+
+    cout << sum << endl;
+    return 0;
+}
 
 
 5) multiply by 2   (( -std=c++11)) for terminal
@@ -107,4 +152,111 @@ int main(){
         cout << x << ' ';
     }
     return 0;
+}
+
+
+6)max of  array
+
+#include <iostream>
+using namespace std;
+int main(){
+    int n;
+    cin >> n ;
+    int a[n]; 
+    
+    for(int i=0; i<n ; ++i){
+        cin >> a[i];
+    }    
+    int mx = a[0];
+
+    for(int i=0; i<n ; ++i){
+        if(mx < a[i]){
+            mx = a[i];
+        }
+    }    
+    cout << mx << endl;
+}
+
+
+7) index of max number
+
+#include <iostream>
+using namespace std;
+int main(){
+    int n;
+    cin >> n ;
+    int a[n]; 
+    
+    for(int i=0; i<n ; ++i){
+        cin >> a[i];
+    }    
+    int mx_i = 0;
+
+    for(int i=0; i<n ; ++i){
+        if(a[mx_i] < a[i]){
+            mx_i = i;
+        }
+    }    
+    cout << mx_i << endl;
+    return 0;
+}
+
+
+8)position of max number
+
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;
+    int a[n];
+
+    for (int i = 0; i < n; ++i) {
+        cin >> a[i];
+    }
+
+    int mx_i = 0; // store index (0-based)
+
+    for (int i = 1; i < n; ++i) { // start from 1, since mx_i=0
+        if (a[i] > a[mx_i]) {
+            mx_i = i;
+        }
+    }
+
+    cout << mx_i + 1 << endl; // output as 1-based index
+    return 0;
+}
+
+
+9) change place max and min 
+
+#include <iostream>
+using namespace std;
+int main(){
+    int n;
+    cin >> n ;
+    int a[n]; 
+    
+    for(int i=0; i<n ; ++i){
+        cin >> a[i];
+    }    
+    int mx = a[0];
+    int min = a[0];
+
+    for(int i=0; i<n ; ++i){
+        if(mx < a[i]){
+            mx = a[i];
+        }
+        if(min > a[i]){
+            min = a[i];
+        }
+    } 
+    for(int i=0; i<n ; ++i){
+        if (a[i] == mx) a[i] = min;
+    }
+    for(int i=0; i<n ; ++i){
+        cout << a[i] << " ";
+    }
 }
