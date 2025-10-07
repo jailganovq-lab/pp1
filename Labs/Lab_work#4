@@ -9,12 +9,9 @@ int main(){
     for(int i = 0; i<n; ++i){
         cin >> a[i] ;
     }
-
     for(int i =n-1; i>=0; --i){
         cout << a[i] << " " ;
     }
-
-
     return 0;
 }
 
@@ -29,10 +26,7 @@ int main(){
     for(int i = 0; i<n; ++i){
         cin >> a[i] ;
     }
-    
-
     sort(a, a+n); 
-
     for(int i =n-1; i>=0; --i){
         cout << a[i] << " " ;
     }
@@ -51,18 +45,16 @@ int main(){
     for(int i = 0; i<n; ++i){
         cin >> a[i] ;
     }
-
     for(int i = 0; i < n/2; ++i){
         swap(a[i], a[n-1-i]);
     }
-
     for(int i = 0 ; i<n; ++i){
         cout << a[i] << " " ;
     }
-
-
     return 0;
 }
+
+
 
 3) with keyword reverse 
 
@@ -80,8 +72,6 @@ int main(){
     for(int i = 0 ; i<n; ++i){
         cout << a[i] << " " ;
     }
-
-
     return 0;
 }
 
@@ -101,12 +91,7 @@ int main(){
     }
     int l , r;
     cin >> l >> r;
-
-
-    sort(a+l, a+r+1);   // sort(a.begin() , a.end());
-
-                         // reverse(a.begin() , a.end());
-
+    sort(a+l, a+r+1); 
     for(int i = 0 ; i<n; ++i){
         cout << a[i] << " " ;
     }
@@ -259,4 +244,282 @@ int main(){
     for(int i=0; i<n ; ++i){
         cout << a[i] << " ";
     }
+}
+
+
+
+111)You’re given an array consisting of integers. Write a program that will reverse elements on the interval between positions 
+l and r.
+
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n, l, r;
+    cin >> n >> l >> r;
+    int arr[n];
+    for (int i = 0; i < n; i++) {
+        cin >> arr[i];
+    }
+    l--;
+    r--;
+    for (int i = l, j = r; i < j; i++, j--) {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+    for (int i = 0; i < n; i++) {
+        cout << arr[i] << " ";
+    }
+    return 0;
+}
+
+
+
+22.2)Array of the unique and sorted elements
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;
+    int arr[n];
+    for (int i = 0; i < n; i++) {
+        cin >> arr[i];
+    }
+    for (int i=0; i<n; ++i){
+        int temp = arr[i];
+        if(temp != arr[i+1]){
+            cout << arr[i] << " ";
+        }
+    }
+    return 0;
+}
+
+
+22.3) add two array in one array
+
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n1;
+    cin >> n1;
+    int a[n1];
+    for (int i = 0; i < n1; i++) {
+        cin >> a[i];
+    }
+    int n2;
+    cin >> n2;
+    int b[n2];
+    for (int i = 0; i < n2; i++) {
+        cin >> b[i];
+    }
+    int c[n1+n2];
+    for (int i = 0; i < n1; i++) {
+        c[i] = a[i];
+    }
+    for (int i = 0; i < n2; i++) {
+        c[n1 + i] = b[i]; 
+    }
+    for (int i = 0; i < n1 + n2; i++) {
+        cout << c[i] << " ";
+    }
+    return 0;
+}
+
+
+23.3)when we dont know number of integers
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    long long x, sum = 0;
+    while (cin >> x) {  
+        sum += x;
+    }
+    cout << sum;
+    return 0;
+}
+
+
+24.4) Given a sorted array and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.
+
+
+#include <iostream>
+using namespace std;
+
+int main(){
+
+    int n, target;
+    cin >> n >> target;
+
+    int arr[n];
+    for(int i = 0; i < n; i++) cin >> arr[i];
+
+    int pos = 0;
+    while(pos < n && arr[pos] < target) pos++;
+
+    cout << pos << endl;
+}
+
+
+
+25.5) find the mode
+
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;
+    int a[1000];
+    for (int i = 0; i < n; i++) cin >> a[i];
+
+    sort(a, a + n); // сұрыптау
+
+    int maxFreq = 1;
+    for (int i = 0; i < n; i++) {
+        int count = 1;
+        for (int j = i + 1; j < n; j++) {
+            if (a[j] == a[i]) count++;
+            else break;
+        }
+        if (count > maxFreq) maxFreq = count;
+    }
+
+    // Ең жиі кездесетін элементтерді шығару (descending)
+    for (int x = 1000; x >= -1000; x--) { // сан диапазонына қарай
+        int count = 0;
+        for (int i = 0; i < n; i++) {
+            if (a[i] == x) count++;
+        }
+        if (count == maxFreq) cout << x << " ";
+    }
+
+    return 0;
+}
+
+
+26.6 Input
+3
+2 8 16
+Output
+2 8
+2 16
+8 16
+
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;
+    int a[1000]; // assuming n ≤ 1000
+    for (int i = 0; i < n; i++) {
+        cin >> a[i];
+    }
+
+    // барлық ерекше жұптарды шығару (индекс бойынша)
+    for (int i = 0; i < n; i++) {
+        for (int j = i + 1; j < n; j++) {
+            cout << a[i] << " " << a[j] << "\n";
+        }
+    }
+
+    return 0;
+}
+
+
+
+
+555) sannyn square ma??
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main() {
+    long long n;
+    cin >> n;
+
+    long long root = (long long)sqrt(n); // бүтін квадрат түбір
+    if (root * root == n)
+        cout << "Yes";
+    else
+        cout << "No";
+
+    return 0;
+}
+
+
+
+666) jay san
+
+#include <iostream>
+#include <cmath>
+using namespace std;
+int main() {
+    long long n;
+    cin >> n;
+    if (n <= 1) {
+        cout << "No";
+        return 0;
+    }
+    bool isPrime = true;
+    for (long long i = 2; i * i <= n; i++) {
+        if (n % i == 0) {
+            isPrime = false;
+            break;
+        }
+    }
+
+    if (isPrime)
+        cout << "Yes";
+    else
+        cout << "No";
+
+    return 0;
+}
+
+
+
+777)he topic of gcd (greatest common divisor, because it’s the only thing he knows) and large numbers .
+3
+2 8 16
+Output
+8
+
+#include <iostream>
+#include <algorithm>
+#include <numeric>
+using namespace std;
+
+int main() {
+    int n;
+    cin>>n;
+    int arr[n];
+    int sum=0;
+    for(int i=0;i<n;i++){
+        cin>>arr[i];
+    }
+    for(int i=0;i<n;i++){
+        for(int j=i+1;j<n;j++){
+            int a=arr[i];
+            int b=arr[j];
+            while(b!=0){
+                int r=a%b;
+                a=b;
+                b=r;
+            }
+            if(a>sum)sum=a;
+        }
+    }
+    cout<<sum;
+    return 0;
 }
