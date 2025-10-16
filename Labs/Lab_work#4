@@ -16,6 +16,7 @@ int main(){
 }
 
 1.1)sort after that reverse
+
 #include <iostream>
 #include <algorithm>
 using namespace std;
@@ -78,7 +79,6 @@ int main(){
 
 4) sorted() 2 san aralygyn sorted jasaydy
 
-
 #include <iostream>
 #include <algorithm>
 using namespace std;
@@ -103,7 +103,6 @@ int main(){
 #include <iostream>
 #include <vector>
 using namespace std;
-
 int main() {
     int n, l, r;
     cin >> n >> l >> r;
@@ -112,12 +111,10 @@ int main() {
     for (int i = 0; i < n; i++) {
         cin >> a[i];
     }
-
     long long sum = 0;
     for (int i = l - 1; i <= r - 1; i++) { // convert positions to 0-based indexes
         sum += a[i];
     }
-
     cout << sum << endl;
     return 0;
 }
@@ -148,12 +145,10 @@ int main(){
     int n;
     cin >> n ;
     int a[n]; 
-    
     for(int i=0; i<n ; ++i){
         cin >> a[i];
     }    
     int mx = a[0];
-
     for(int i=0; i<n ; ++i){
         if(mx < a[i]){
             mx = a[i];
@@ -192,7 +187,6 @@ int main(){
 
 #include <iostream>
 using namespace std;
-
 int main() {
     int n;
     cin >> n;
@@ -281,7 +275,6 @@ int main() {
 
 #include <iostream>
 using namespace std;
-
 int main() {
     int n;
     cin >> n;
