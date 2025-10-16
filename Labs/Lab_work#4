@@ -523,3 +523,38 @@ int main() {
     cout<<sum;
     return 0;
 }
+
+
+
+
+mode
+
+
+#include <iostream>
+using namespace std;
+int main(){
+    int n;
+    cin >> n;
+    int a[n];
+    int b[1001] = {};
+    for(int i=0; i<n; ++i){
+        cin >> a[i];
+        ++b[a[i]];
+    }
+    int max_cnt = 0;
+    for(int i=0 ; i<1001; ++i){
+        if(b[i]>max_cnt){
+            max_cnt=b[i];
+
+        }   
+    }
+
+    for(int i=1001; i>=0; --i){
+        if(b[i]==max_cnt) cout << i << " ";
+    }
+
+    cout << endl;
+
+    return 0;
+
+}
