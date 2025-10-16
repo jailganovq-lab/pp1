@@ -1,21 +1,24 @@
 1)	Decimal to binary
 code:
-	#include <iostream>
-	using namespace std;
-	int main(){
-	    int dec;
-	    cin >> dec;
-	    while(dec>0){
-	        int rem = dec % 2;
-	        dec /=2;
-	        cout << rem ;
-	    }
-	    cout << endl;
-	    return 0;
-	}
+#include <iostream>
+using namespace std;
+int main(){
+    int a;
+    cin >> a;
+    string res = "";
+    while(a>0){
+        int rem = a%2;
+        a/=2;
+        res += 48 + rem;
+    }
+    for(int i = res.length()-1; i>=0; --i){
+        cout << res[i];
+    }
+    cout << endl;
+    return 0;
+}
 
-
-14) from bin to dec
+2)from bin to dec
 code:
 #include <iostream>
 using namespace std;
@@ -33,6 +36,29 @@ int main() {
     cout << res << endl;
     return 0;
 }
+
+
+
+3)from dec to any
+
+#include <iostream>
+#include <algorithm> // needed for reverse()
+using namespace std;
+int main() {
+    int n, base; // the base we are converting into
+    cin >> n >> base;
+    string digits = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    string res = "";
+    while(n > 0) {
+        int rem = n % base;
+        n /= base;
+        res += digits[rem];
+    }
+    reverse(res.begin(), res.end());
+    cout << res << endl;
+    return 0;
+}
+
 
 Setting a bit: x |= (1 << n) sets bit n.
 Clearing a bit: x &= ~(1 << n) clears bit n.
@@ -74,35 +100,13 @@ int main() {
 
 
 
-15) from dec to any
-// from dec to any
-
-#include <iostream>
-#include <algorithm> // needed for reverse()
-using namespace std;
-int main() {
-    int n, base; // the base we are converting into
-    cin >> n >> base;
-    string digits = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    string res = "";
-    while(n > 0) {
-        int rem = n % base;
-        n /= base;
-        res += digits[rem];
-    }
-    reverse(res.begin(), res.end());
-    cout << res << endl;
-    return 0;
-}
 
 
-
-In this problem, you are given an 8-bit number . Your task is to find the number of 1-bits in its binary representation.
+4)In this problem, you are given an 8-bit number . Your task is to find the number of 1-bits in its binary representation.
 For example, the binary representation of the number 23 is 00010111. The number of 1-bits is 4.
 
 #include <iostream>
 using namespace std;
-
 int main() {
     int n;
     cin >> n; // 8-бит сан
@@ -118,23 +122,21 @@ int main() {
 }
 
 
-You are given a 9-bit number . Flip all the bits in its binary representation. Flipping a bit means replacing it with the opposite one.
+5)You are given a 9-bit number . Flip all the bits in its binary representation. Flipping a bit means replacing it with the opposite one.
 
 #include <iostream>
 using namespace std;
-
 int main() {
     int n;
     cin >> n;    
     // 9 биттің барлығы 1 → 511 (binary: 111111111)
     int result = 511 - n;
-    
     cout << result << endl;
     return 0;
 }
 
 
-You are given a 7-bit number. Find its rightmost set bit (1-bit) in its binary representation.
+6)You are given a 7-bit number. Find its rightmost set bit (1-bit) in its binary representation.
 
 #include <iostream>
 using namespace std;
@@ -155,7 +157,8 @@ int main() {
 
 
 
-Given n numbers you need to output the number of zeros among these numbers
+7)Given n numbers you need to output the number of zeros among these numbers
+
 #include <iostream>
 using namespace std;
 int main(){
@@ -171,23 +174,20 @@ int main(){
         }
         temp /=10 ;
     }
-        
     }
     cout << sum << endl;
 }
 
 
-You’re given a sequence of digits (0-9). You need to answer whether the sum of digits in odd positions is equal to the sum of digits in even positions.
- #include <iostream>
+8)You’re given a sequence of digits (0-9). You need to answer whether the sum of digits in odd positions is equal to the sum of digits in even positions.
+
+#include <iostream>
 #include <string>
 using namespace std;
-
 int main() {
     string s;
     cin >> s;
-
     int oddSum = 0, evenSum = 0;
-
     for (int i = 0; i < s.size(); i++) {
         int digit = s[i] - '0'; // символды санға айналдыру
         if ((i + 1) % 2 == 1)   // позицияны 1-ден бастап санау
@@ -195,7 +195,6 @@ int main() {
         else
             evenSum += digit;
     }
-
     if (oddSum == evenSum)
         cout << "YES";
     else
@@ -206,7 +205,7 @@ int main() {
 
 
 
-Van Sama wants to go to the Mr. International Leather Contest. To transport his belongings, he bought a suitcase with a 4-digit combination lock. To unlock this lock, he needs to calculate the difference between the sum of all the even digits and the sum of all the odd digits in the combination lock. Help Van calculate this number.
+9)Van Sama wants to go to the Mr. International Leather Contest. To transport his belongings, he bought a suitcase with a 4-digit combination lock. To unlock this lock, he needs to calculate the difference between the sum of all the even digits and the sum of all the odd digits in the combination lock. Help Van calculate this number.
 #include <iostream>
 #include <string>
 using namespace std;
@@ -229,17 +228,14 @@ int main() {
 }
 
 
-Given a decimal number 
-, convert it to the hexadecimal numeric system. It is guaranteed that 1 hexadecimal digit is enough to represent the number 
-. Important: Output the answer as a char.
+10)Given a decimal number , convert it to the hexadecimal numeric system. It is guaranteed that 1 hexadecimal digit is enough to represent the number . Important: Output the answer as a char.
 Hexadecimal numbers use 16 values to represent a number. The numbers 0 through 9 are represented by the characters 0-9, and 10-15 are represented by the characters A through F.
+
 #include <iostream>
 using namespace std;
-
 int main() {
     int n;
     cin >> n;
-
     char hexChar;
     if (n < 10)
         hexChar = '0' + n;       // цифр
