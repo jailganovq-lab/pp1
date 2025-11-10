@@ -1,1 +1,97 @@
+/*
+string input
+*/
 
+#include <iostream>
+
+using namespace std;
+
+int main() {
+
+    string s;
+
+    getline(cin, s);
+
+    cout << s << endl;
+
+    return 0;
+}
+
+
+
+
+/*
+searching in a string
+str.find(word)
+*/
+
+#include <iostream>
+
+using namespace std;
+
+int main() {
+
+    string text;
+    getline(cin, text);
+
+    string word;
+    cin >> word;
+
+    size_t pos = text.find(word);
+    
+    // index where the word has been found
+    cout << pos << endl;
+
+    // cout << string::npos;
+
+    if(pos != string::npos) { // if pos != string::npos is true, it means the word has been found
+        for(size_t i = pos; i < pos + word.size(); ++i) {
+            cout << text[i];
+        }
+        cout << endl;
+    }
+
+    return 0;
+}
+
+
+to access individual letters:
+unchecked access - str[index]
+checked access   - str.at(index)
+
+iterating over individual elements:
+
+for(int i = 0; i < str.size(); ++i) cout << str[i];
+
+
+
+
+ string s = "world";
+
+    // accessing the first element
+    cout << s[0] << endl;
+    cout << s.at(0) << endl;
+    cout << s.front() << endl;   // if s.front() does not compile, use -std=c++11
+    cout << *s.begin() << endl;  // s.begin() is an iterator, it contains an address (points to something)
+                                 // *s.begin() -> *address -> value stored at the address
+    
+    // accessing the last element
+    cout << s[s.size() - 1] << endl;
+    cout << s.at(s.size() - 1) << endl;
+    cout << s.back() << endl;          // if s.back() does not compile, use -std=c++11
+    cout << *(s.end() - 1) << endl;    // s.end() is an iterator, it contains an address (points to something)
+
+
+
+1) change element upper element 
+
+#include <iostream>
+#include <cctype>   
+using namespace std;
+int main() {
+    char ch;
+    cin >> ch;
+    char upperCh = toupper(ch);   
+
+    cout<< upperCh << endl;
+}
