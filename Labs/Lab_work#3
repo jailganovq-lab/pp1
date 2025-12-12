@@ -1,20 +1,17 @@
 1)	Decimal to binary
-code:
 #include <iostream>
 using namespace std;
 int main(){
-    int a;
-    cin >> a;
-    string res = "";
-    while(a>0){
-        int rem = a%2;
-        a/=2;
-        res += 48 + rem;
+
+    int decimal_num;
+    cin >> decimal_num;
+    string binary_num = "";
+    while(decimal_num > 0 ){
+        int rem = decimal_num % 2;
+        decimal_num /= 2;
+        binary_num = char(rem + '0') + binary_num ;
     }
-    for(int i = res.length()-1; i>=0; --i){
-        cout << res[i];
-    }
-    cout << endl;
+    cout << binary_num << endl; 
     return 0;
 }
 
