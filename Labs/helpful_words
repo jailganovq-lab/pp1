@@ -1,0 +1,135 @@
+.push_back() = add element end of the list
+.size() / .length() = uses for string like vector for find volume
+.insert() = for set uses for adding elements
+
+
+#include <vector>   vector<int> v;    = простой лист сиякты
+#include <set>  set<int> s; = always automaticcaly sorted
+
+
+pair<string , bool> p =make_pair("apple" ,true);
+cin >> p.first >> p.second ;
+
+map = set + pair
+
+
+  🔹 1. Stack
+📍 Анықтама
+
+Stack — LIFO принципі
+👉 Last In, First Out
+
+📍 Header
+#include <stack>
+
+📍 Негізгі операциялар
+
+push(x) — элемент қосу
+
+pop() — жоғарғысын өшіру
+
+top() — жоғарғы элемент
+
+empty() — бос па
+
+size() — өлшемі
+
+📍 Мысал
+stack<int> s;
+s.push(10);
+s.push(20);
+cout << s.top(); // 20
+s.pop();
+
+📍 Қолданылуы
+
+Undo / Redo
+
+Рекурсия
+
+Жақшаларды тексеру
+
+
+
+
+  🔹 2. Queue
+📍 Анықтама
+
+Queue — FIFO принципі
+👉 First In, First Out
+
+📍 Header
+#include <queue>
+
+📍 Негізгі операциялар
+
+push(x) — соңына қосу
+
+pop() — алдынан өшіру
+
+front() — бірінші элемент
+
+back() — соңғы элемент
+
+empty()
+
+size()
+
+📍 Мысал
+queue<int> q;
+q.push(1);
+q.push(2);
+cout << q.front(); // 1
+q.pop();
+
+📍 Қолданылуы
+
+Кезектер
+
+Процесс басқару
+
+BFS алгоритмі
+
+
+
+
+🔹 3. Deque (Double-ended Queue)
+📍 Анықтама
+
+Deque — екі жағынан да қосуға және өшіруге болады
+
+📍 Header
+#include <deque>
+
+📍 Негізгі операциялар
+
+push_front(x)
+
+push_back(x)
+
+pop_front()
+
+pop_back()
+
+front()
+
+back()
+
+empty()
+
+size()
+
+📍 Мысал
+deque<int> d;
+d.push_back(10);
+d.push_front(5);
+cout << d.front(); // 5
+cout << d.back();  // 10
+
+📍 Қолданылуы
+
+Sliding window
+
+Stack/Queue орнына
+
+Екі жақты кезек
