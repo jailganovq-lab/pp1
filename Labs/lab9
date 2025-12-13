@@ -1,0 +1,366 @@
+ex1
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+// Comparator: descending order
+bool cmp(int a, int b) {
+    return a > b;
+}
+
+int main() {
+    int n;
+    cin >> n;
+
+    vector<int> a(n);
+    for (int i = 0; i < n; i++) {
+        cin >> a[i];
+    }
+
+    sort(a.begin(), a.end(), cmp);
+
+    for (int x : a) {
+        cout << x << " ";
+    }
+
+    return 0;
+}
+
+ex2
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+bool cmp(int a, int b) {
+    // a жұп, b тақ → a алдына
+    if (a % 2 == 0 && b % 2 != 0)
+        return true;
+
+    // a тақ, b жұп → b алдына
+    if (a % 2 != 0 && b % 2 == 0)
+        return false;
+
+    // екеуі де жұп → кемімелі
+    if (a % 2 == 0)
+        return a > b;
+
+    // екеуі де тақ → өспелі
+    return a < b;
+}
+
+int main() {
+    int n;
+    cin >> n;
+
+    vector<int> a(n);
+    for (int i = 0; i < n; i++) {
+        cin >> a[i];
+    }
+
+    sort(a.begin(), a.end(), cmp);
+
+    for (int x : a) {
+        cout << x << " ";
+    }
+
+    return 0;
+}
+
+ex3
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;
+
+    vector<pair<int, int>> v;
+
+    for (int i = 1; i <= n; i++) {
+        int a, b;
+        cin >> a >> b;
+        v.push_back({a + b, i});
+    }
+
+    sort(v.begin(), v.end());
+
+    for (auto p : v) {
+        cout << p.second << " ";
+    }
+
+    return 0;
+}
+
+
+ex4
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+    long long x;
+    cin >> n >> x;
+
+    long long a;
+    int cnt = 0;
+
+    for (int i = 0; i < n; i++) {
+        cin >> a;
+        if (a == x) {
+            cnt++;
+        }
+    }
+
+    cout << cnt;
+    return 0;
+}
+
+
+ex5
+#include <iostream>
+#include <map>
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;
+
+    map<int, int> mp;
+    int x;
+
+    for (int i = 0; i < n; i++) {
+        cin >> x;
+        mp[x]++;
+    }
+
+    // map соңғы элементі — max
+    auto it = mp.end();
+    it--;          // max
+    it--;          // 2'nd max
+
+    cout << it->second;
+    return 0;
+}
+
+
+ex6
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;
+    unordered_set<string> users; // тіркелген логиндер
+
+    for (int i = 0; i < n; ++i) {
+        string login;
+        cin >> login;
+
+        if (users.count(login)) {
+            cout << "user already exists" << endl;
+        } else {
+            cout << "new user added" << endl;
+            users.insert(login);
+        }
+    }
+
+    return 0;
+}
+Түсіндірме:
+
+unordered_set<string> users – логиндерді сақтау үшін.
+
+users.count(login) – егер логин бар болса 1 қайтарады, жоқ болса 0.
+
+users.insert(login) – жаңа логинді қосу
+
+ex7
+#include <iostream>
+#include <vector>
+#include <map>
+using namespace std;
+
+int main () {
+    map <string, string> mp;
+    string log, pas; int a, b; cin >> a;
+    for (int i = 0;i < a;i++) {
+        cin >> log >> pas;
+        mp[log] = pas;
+    }
+    cin >> b;
+    for (int i = 0;i < b;i++) {
+        cin >> log >> pas;
+        if (mp[log] == pas) cout << "correct password" << endl;
+        else if (mp[log] == "") cout << "login error" << endl;
+        else cout << "password error" << endl;
+    }
+    return 0;
+
+
+ex8
+#include <iostream>
+#include <map>
+#include <set>
+#include <string>
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;
+
+    map<string, set<int>> attendance;
+
+    for (int i = 0; i < n; i++) {
+        string name;
+        int day;
+        cin >> name >> day;
+        attendance[name].insert(day); // set қайталанатын күндерді сақтамайды
+    }
+
+    for (map<string, set<int>>::iterator it = attendance.begin(); it != attendance.end(); ++it) {
+        string name = it->first;
+        set<int> days = it->second;
+
+        if (days.size() >= 3) {
+            cout << name << " +1" << endl;
+        } else {
+            cout << name << " NO BONUS" << endl;
+        }
+    }
+
+    return 0;
+}
+
+
+ex9
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;
+
+    map<string, pair<int,int>> students; // name -> {sum, count}
+
+    for (int i = 0; i < n; ++i) {
+        string name;
+        int gpa;
+        cin >> name >> gpa;
+
+        students[name].first += gpa;  // GPA қосу
+        students[name].second += 1;   // semester саны
+    }
+
+    for (auto& [name, data] : students) {
+        double avg = (double)data.first / data.second;
+        cout << name << ": ";
+        printf("%.3f\n", avg); // 3 ондық таңбамен шығару
+    }
+
+    return 0;
+}
+
+
+ex917
+#include <bits/stdc++.h>
+using namespace std;
+
+int check(char op) {
+    if (op == '*' || op == '/') return 2;
+    if (op == '+' || op == '-') return 1;
+    return 0;
+}
+
+int main() {
+    string s;
+    getline(cin, s);
+
+    string result;
+    stack<char> st;
+
+    for (int i = 0; i < s.length(); i++) {
+        char c = s[i];
+        if (c == ' ') continue;
+
+        if (isdigit(c)) {
+            result += c;
+            result += ' ';
+        }
+        else if (c == '(') {
+            st.push(c);
+        }
+        else if (c == ')') {
+            while (!st.empty() && st.top() != '(') {
+                result += st.top();
+                result += " ";
+                st.pop();
+            }
+            if (!st.empty()) st.pop();
+        }
+        else {
+            while (!st.empty() && check(st.top()) >= check(c)) {
+                result += st.top();
+                result += " ";
+                st.pop();
+            }
+            st.push(c);
+        }
+    }
+
+    while (!st.empty()) {
+        result += st.top();
+        result += " ";
+        st.pop();
+    }
+    if(result.back() == ' ') result.pop_back();
+    cout << result << endl;
+
+    return 0;
+}
+
+
+
+1013
+#include <iostream>
+using namespace std;
+int main()
+{
+    int a;
+    cin >> a;
+    double b = a;
+    double arr[a];
+    double sum = 0;
+    for (int i = 0; i < a; i++)
+    {
+        cin >> *(arr + i);
+        sum += *(arr + i);
+    }
+    cout << "Prices: ";
+    for (int i = 0; i < a; i++)
+    {
+        cout << *(arr + i) << " ";
+    }cout<<endl;
+    cout << "Total: " << sum<<endl;
+    cout << "Average: " << sum / b<<endl;
+}
+
+
+
+1105
+#include <iostream>
+using namespace std;
+int nBonacci(int n, int m) {
+    if (m == 1) return 0;
+    if (m == 2) return 1;
+    return nBonacci(n, m - 1) + n * nBonacci(n, m - 2);
+}
+int main() {
+    int n, m;
+    cin >> n >> m;
+    cout << nBonacci(n, m) << endl;
+    return 0;
+}
