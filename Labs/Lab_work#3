@@ -80,46 +80,6 @@ int main() {
 }
 
 
-Setting a bit: x |= (1 << n) sets bit n.
-Clearing a bit: x &= ~(1 << n) clears bit n.
-Toggling a bit: x ^= (1 << n) flips bit n.
-Checking bit: (x >> n) & 1 returns bit n (0 or 1).
-Check if even: (x & 1) == 0 -> true if even.
-code:
-#include <iostream>
-using namespace std;
-int main() {
-    int a = 3; // 32-bit signed integer
-    // setting a bit:
-    cout << (a | (1 << 3)) << endl;
-    int n = 3;
-    a |= (1 << n);
-    cout << a << endl;
-
-    // clearing a bit (bit masking):
-    cout << (a & ~(1 << 3)) << endl;
-    n = 3;
-    a &= ~(1 << n);
-    cout << a << endl;
-
-    // toggling a bit:
-    n = 3;
-    a ^= (1 << n);
-    cout << a << endl;
-    cout << (a ^ (1 << 3)) << endl;
-
-    // checking a bit:
-    n = 3;
-    cout << ((a >> n) & 1) << endl;
-
-    // checking if the number is even:
-    cout << ((a & 1) == 0) << endl;
-
-    return 0;
-}
-
-
-
 
 
 4)In this problem, you are given an 8-bit number . Your task is to find the number of 1-bits in its binary representation.
