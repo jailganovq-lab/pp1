@@ -1,64 +1,3 @@
-1)	Decimal to binary
-#include <iostream>
-using namespace std;
-int main(){
-
-    int decimal_num;
-    cin >> decimal_num;
-    string binary_num = "";
-    while(decimal_num > 0 ){
-        int rem = decimal_num % 2;
-        decimal_num /= 2;
-        binary_num = char(rem + '0') + binary_num ;
-    }
-    cout << binary_num << endl; 
-    return 0;
-}
-#2 tip
-#include <iostream>
-#include <cmath>
-
-using namespace std;
-
-int main(){
-    string bin;
-    cin >> bin;
-
-    int dec = 0;
-    int power = pow(2, bin.length()-1);
-
-    for(int i=0; i<bin.length(); ++i){
-        dec += (bin[i] - '0') * power ;
-        power /= 2;
-    }
-
-    cout << dec << endl;
-    return 0;
-}
-
-
-
-2)from bin to dec
-code:
-#include <iostream>
-using namespace std;
-int main() {
-    string bin;
-    cin >> bin;
-    int res = 0; // decimal value of bin
-    int power = 1; // value of 2 to the power of 0
-    // going over the string in reverse
-    for(int i = bin.length() - 1; i >= 0; --i) {
-        bin[i]; // 1 or 0 (char)
-        res += (bin[i] - '0') * power;
-        power *= 2; 
-    }
-    cout << res << endl;
-    return 0;
-}
-
-
-
 3)from dec to any
 
 #include <iostream>
@@ -81,39 +20,6 @@ int main() {
 
 
 
-
-4)In this problem, you are given an 8-bit number . Your task is to find the number of 1-bits in its binary representation.
-For example, the binary representation of the number 23 is 00010111. The number of 1-bits is 4.
-
-#include <iostream>
-using namespace std;
-int main() {
-    int n;
-    cin >> n; // 8-бит сан
-    int count = 0;
-
-    for (int i = 0; i < 8; i++) {
-        if ((n >> i) & 1) {
-            count++;
-        }
-    }
-    cout << count << endl;
-    return 0;
-}
-
-
-5)You are given a 9-bit number . Flip all the bits in its binary representation. Flipping a bit means replacing it with the opposite one.
-
-#include <iostream>
-using namespace std;
-int main() {
-    int n;
-    cin >> n;    
-    // 9 биттің барлығы 1 → 511 (binary: 111111111)
-    int result = 511 - n;
-    cout << result << endl;
-    return 0;
-}
 
 
 6)You are given a 7-bit number. Find its rightmost set bit (1-bit) in its binary representation.
